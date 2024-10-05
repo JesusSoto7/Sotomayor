@@ -27,6 +27,18 @@ class User {
     Map com = map['company'];
     this.company = new Company(com);
   }
+
+  @override
+  String toString() {
+    return "ID: ${this.id}, "
+    "NAME: ${this.name}, "
+    "USERNAME: ${this.username}, "
+    "EMAIL: ${this.email}, "
+    "${this.address}, "
+    "PHONE: ${this.phone}, "
+    "WEBSITE: ${this.website}, "
+    "${this.company}.";
+  }
 }
 
 class Company {
@@ -38,6 +50,13 @@ class Company {
     this.name = company['name'];
     this.catchPhrase = company['catchPhrase'];
     this.bs = company['bs'];
+  }
+
+  @override
+  String toString(){
+    return "NAMECOMPANY: ${this.name}, "
+    "CATCHPHRASE: ${this.catchPhrase}, "
+    "BS: ${this.bs}";
   }
 }
 
@@ -57,6 +76,15 @@ class Address {
     Map g = address['geo'];
     this.geo = new Geo(g);
   }
+
+  @override
+  String toString() {
+    return "STREET: ${this.street}, "
+      "SUITE: ${this.suite}, "
+      "CITY: ${this.city}, "
+      "ZIPCODE: ${this.zipcode}, "
+      "${this.geo}";
+  }
 }
 
 class Geo {
@@ -67,11 +95,16 @@ class Geo {
     this.lat = geo['lat'];
     this.lng = geo['lng'];
   }
+
+  @override
+  String toString(){
+    return "LAT:${this.lat}, "
+      "LNG:${this.lng}";
+  }
 }
 
 void main() async {
   //Aqui falta agg q el usuario agg el id con un imput
-  //Ya despues lo ago
   int num = 1;
   var url = Uri.https('jsonplaceholder.typicode.com', 'users/${num}');
 
@@ -81,8 +114,11 @@ void main() async {
 
   if (response.statusCode == 200) {
     User user = new User(response.body);
-    //Falta imprimir el resto pero ya funciona de por si el codigo
-    print(user.address?.city);
-    print(user.name);
+    
+    //esto es un ejemplo de como se imprime un atributo en especifico
+    // de una clase instanciada en user [print(user.address?.geo?.lat);]
+    
+    //Modifique toString para que imprimiera todo de una
+    print(user);
   }
 }
