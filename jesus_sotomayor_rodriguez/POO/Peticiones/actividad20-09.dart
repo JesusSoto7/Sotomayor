@@ -7,7 +7,7 @@ import 'dart:convert';
 class Agua {
   int? exp;
 
-  Agua(int jsonString) {
+  Agua(String jsonString) {
     //Convierte el json string a map
     Map<String, dynamic> map = jsonDecode(jsonString);
 
