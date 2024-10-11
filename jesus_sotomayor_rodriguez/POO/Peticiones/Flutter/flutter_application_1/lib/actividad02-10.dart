@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+void main() {
+  runApp(MyApp());
+}
+
 class MyApp extends StatefulWidget {
   @override
   _MyAppState createState() => _MyAppState();
@@ -181,22 +185,22 @@ class Geo {
   }
 }
 
-void main() async {
+//void main() async {
   //Aqui falta agg q el usuario agg el id con un imput
-  int num = 1;
-  var url = Uri.https('jsonplaceholder.typicode.com', 'users/${num}');
+  //int num = 1;
+  //var url = Uri.https('jsonplaceholder.typicode.com', 'users/${num}');
 
-  var response = await http.get(url);
+  //var response = await http.get(url);
 
-  print('Response status: ${response.statusCode}');
+  //print('Response status: ${response.statusCode}');
 
-  if (response.statusCode == 200) {
-    User user = new User(response.body);
+  //if (response.statusCode == 200) {
+    //User user = new User(response.body);
     
     //esto es un ejemplo de como se imprime un atributo en especifico
     // de una clase instanciada en user [print(user.address?.geo?.lat);]
     
     //Modifique toString para que imprimiera todo de una
-    print(user);
-  }
-}
+   // print(user);
+  //}
+//}
