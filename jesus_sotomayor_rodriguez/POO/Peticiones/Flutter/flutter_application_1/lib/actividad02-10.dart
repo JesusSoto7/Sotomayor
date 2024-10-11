@@ -1,5 +1,82 @@
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  Future<User>? _futureUser;
+  final TextEditingController _controller = TextEditingController();
+
+  Future<User> fetchUser(int id) async {
+    var url = Uri.https('jsonplaceholder.typicode.com', 'users/$id');
+    var response = await http.get(url);
+
+    if (response.statusCode == 200) {
+      return User(response.body);
+    } else {
+      throw Exception('Valio Monda');
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'PlaceHolder',
+      home: Scaffold(
+        appBar: AppBar(title: Text('User')),
+        body: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              TextField(
+                controller: _controller,
+                decoration: InputDecoration(labelText: 'Ingresa ID'),
+                keyboardType: TextInputType.number,
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  int id = int.tryParse(_controller.text) ?? 0;
+                  if (id > 0) {
+                    setState(() {
+                      _futureUser = fetchUser(id);
+                    });
+                  }
+                },
+                child: Text('Go compae'),
+              ),
+              _futureUser == null
+                  ? Container()
+                  : FutureBuilder<User>(
+                      future: _futureUser,
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return CircularProgressIndicator();
+                        } else if (snapshot.hasError) {
+                          return Text('${snapshot.error}');
+                        } else if (snapshot.hasData) {
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Name: ${snapshot.data!.name}'),
+                            ],
+                          );
+                        } else {
+                          return Text('Valio monda');
+                        }
+                      },
+                    ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
 
 
 class User {
