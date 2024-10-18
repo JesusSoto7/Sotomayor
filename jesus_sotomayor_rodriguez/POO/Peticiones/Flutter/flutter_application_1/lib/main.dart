@@ -1,48 +1,59 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'dart:async';
 
 void main() {
   runApp(MyApp());
 }
 
+Future<User> fetchData() async {
+  var url = Uri.https('jsonplaceholder.typicode.com', 'users/4');
+  var response = await http.get(url);
+  return User(response.body);
+}
 
-class MyApp extends StatefulWidget{
+class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'PlaceHolder',
       home: Scaffold(
         appBar: AppBar(title: Text('User')),
-        //backgroundColor: Colors.black,
-        body: Column(
-          children: [
-            Text('id: 1}'),
-            Text('name: Leanne Graham'),
-            Text('username: Bret'),
-            Text('email: Sincere@april.biz'),
-            Text('address: {'
-                'street: Kulas Light,'
-                'suite: Apt. 556,'
-                'city: Gwenborough,'
-                'zipcode: 92998-3874,'
-                'geo: {'
-                'lat: -37.3159,'
-                'lng: 81.1496}'
-                '}'),
-            Text('phone: 1-770-736-8031 x56442'),
-            Text('website: hildegard.org'),
-            Text('company: {'
-                'name: Romaguera-Crona, '
-                'catchPhrase: Muti-layered client-server neural-net, '
-                'bs: harness real-time e-markets}'),
-            ElevatedButton(onPressed: () {}, child: Text('Buscar USER')),
-            Icon(
-              Icons.favorite,
-              color: Colors.green,
-              size: 24.0,
-            ),
-            CircularProgressIndicator()
-          ],
+        body: FutureBuilder<User>(
+          future: fetchData(),
+          builder: (BuildContext context, AsyncSnapshot<User> snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(child: CircularProgressIndicator());
+            } else if (snapshot.hasError) {
+              return Center(child: Text('Error: ${snapshot.error}'));
+            } else if (snapshot.hasData) {
+              User user = snapshot.data!;
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('ID: ${user.id}'),
+                  Text('Name: ${user.name}'),
+                  Text('Username: ${user.username}'),
+                  Text('Email: ${user.email}'),
+                  Text(
+                      'Address: ${user.address!}'),
+                  Text('Geo: Lat ${user.address!.geo!}'),
+                  Text('Phone: ${user.phone}'),
+                  Text('Website: ${user.website}'),
+                  Text(
+                      'Company: ${user.company!}'),
+                  ElevatedButton(onPressed: () {}, child: Text('Buscar USER')),
+                  Icon(
+                    Icons.favorite,
+                    color: Colors.green,
+                    size: 24.0,
+                  ),
+                ],
+              );
+            } else {
+              return Center(child: Text('No data available'));
+            }
+          },
         ),
       ),
     );
@@ -67,25 +78,25 @@ class User {
     this.email = map['email'];
 
     Map addr = map['address'];
-    this.address = new Address(addr);
+    this.address = Address(addr);
 
     this.phone = map['phone'];
     this.website = map['website'];
 
     Map com = map['company'];
-    this.company = new Company(com);
+    this.company = Company(com);
   }
 
   @override
   String toString() {
     return "ID: ${this.id}, "
-    "NAME: ${this.name}, "
-    "USERNAME: ${this.username}, "
-    "EMAIL: ${this.email}, "
-    "${this.address}, "
-    "PHONE: ${this.phone}, "
-    "WEBSITE: ${this.website}, "
-    "${this.company}.";
+        "NAME: ${this.name}, "
+        "USERNAME: ${this.username}, "
+        "EMAIL: ${this.email}, "
+        "${this.address}, "
+        "PHONE: ${this.phone}, "
+        "WEBSITE: ${this.website}, "
+        "${this.company}.";
   }
 }
 
@@ -101,10 +112,10 @@ class Company {
   }
 
   @override
-  String toString(){
+  String toString() {
     return "NAMECOMPANY: ${this.name}, "
-    "CATCHPHRASE: ${this.catchPhrase}, "
-    "BS: ${this.bs}";
+        "CATCHPHRASE: ${this.catchPhrase}, "
+        "BS: ${this.bs}";
   }
 }
 
@@ -122,16 +133,16 @@ class Address {
     this.zipcode = address['zipcode'];
 
     Map g = address['geo'];
-    this.geo = new Geo(g);
+    this.geo = Geo(g);
   }
 
   @override
   String toString() {
     return "STREET: ${this.street}, "
-      "SUITE: ${this.suite}, "
-      "CITY: ${this.city}, "
-      "ZIPCODE: ${this.zipcode}, "
-      "${this.geo}";
+        "SUITE: ${this.suite}, "
+        "CITY: ${this.city}, "
+        "ZIPCODE: ${this.zipcode}, "
+        "${this.geo}";
   }
 }
 
@@ -145,8 +156,8 @@ class Geo {
   }
 
   @override
-  String toString(){
+  String toString() {
     return "LAT:${this.lat}, "
-      "LNG:${this.lng}";
+        "LNG:${this.lng}";
   }
 }
