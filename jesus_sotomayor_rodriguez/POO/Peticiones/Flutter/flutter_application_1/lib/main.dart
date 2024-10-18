@@ -8,7 +8,7 @@ void main() {
 }
 
 Future<User> fetchData() async {
-  var url = Uri.https('jsonplaceholder.typicode.com', 'users/4');
+  var url = Uri.https('jsonplaceholder.typicode.com', 'users/9');
   var response = await http.get(url);
   return User(response.body);
 }
@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'PlaceHolder',
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(title: Text('User')),
         body: FutureBuilder<User>(
@@ -28,27 +29,27 @@ class MyApp extends StatelessWidget {
               return Center(child: Text('Error: ${snapshot.error}'));
             } else if (snapshot.hasData) {
               User user = snapshot.data!;
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('ID: ${user.id}'),
-                  Text('Name: ${user.name}'),
-                  Text('Username: ${user.username}'),
-                  Text('Email: ${user.email}'),
-                  Text(
-                      'Address: ${user.address!}'),
-                  Text('Geo: Lat ${user.address!.geo!}'),
-                  Text('Phone: ${user.phone}'),
-                  Text('Website: ${user.website}'),
-                  Text(
-                      'Company: ${user.company!}'),
-                  ElevatedButton(onPressed: () {}, child: Text('Buscar USER')),
-                  Icon(
-                    Icons.favorite,
-                    color: Colors.green,
-                    size: 24.0,
-                  ),
-                ],
+              return Center(
+                child: Column(
+                  children: [
+                    Text('ID: ${user.id}'),
+                    Text('Name: ${user.name}'),
+                    Text('Username: ${user.username}'),
+                    Text('Email: ${user.email}'),
+                    Text('Address: ${user.address!.city!}'),
+                    Text('Geo: Lat ${user.address!.geo!.lat!}'),
+                    Text('Phone: ${user.phone}'),
+                    Text('Website: ${user.website}'),
+                    Text('Company: ${user.company!.name!}'),
+                    //ElevatedButton(
+                    //onPressed: () {}, child: Text('Buscar USER')),
+                    Icon(
+                      Icons.favorite,
+                      color: Colors.green,
+                      size: 24.0,
+                    ),
+                  ],
+                ),
               );
             } else {
               return Center(child: Text('No data available'));
