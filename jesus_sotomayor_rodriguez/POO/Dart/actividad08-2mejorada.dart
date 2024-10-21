@@ -56,7 +56,7 @@ void main(){
   double dos = double.parse(stdin.readLineSync()!);
 
   print("Ingrese la operacion");
-  String o = (stdin.readLineSync()!);
+  String o = stdin.readLineSync()!;
   
   Calculadora cal = new Calculadora(uno, dos, o);
   cal.calcular();
