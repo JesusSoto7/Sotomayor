@@ -8,6 +8,7 @@ void main() {
 }
 
 class MyApp extends StatefulWidget {
+  @override
   MyAppful createState() => MyAppful();
 }
 
@@ -20,7 +21,7 @@ class MyAppful extends State<MyApp> {
     var response = await http.get(url);
     return User(response.body);
   }
-
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'PlaceHolder',
@@ -45,7 +46,7 @@ class MyAppful extends State<MyApp> {
             child: Text('Buscar USER'),
           ),
           FutureBuilder<User>(
-            future: fetchData(userId!),
+            future: fetchData(userId),
             builder: (BuildContext context, AsyncSnapshot<User> snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return Center(child: CircularProgressIndicator());
