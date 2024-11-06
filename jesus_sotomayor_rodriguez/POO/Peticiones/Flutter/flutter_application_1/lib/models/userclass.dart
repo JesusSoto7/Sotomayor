@@ -12,31 +12,31 @@ class User {
 
   User(String jsonString) {
     Map<String, dynamic> map = jsonDecode(jsonString);
-    this.id = map['id'];
-    this.name = map['name'];
-    this.username = map['username'];
-    this.email = map['email'];
+    id = map['id'];
+    name = map['name'];
+    username = map['username'];
+    email = map['email'];
 
     Map addr = map['address'];
-    this.address = Address(addr);
+    address = Address(addr);
 
-    this.phone = map['phone'];
-    this.website = map['website'];
+    phone = map['phone'];
+    website = map['website'];
 
     Map com = map['company'];
-    this.company = Company(com);
+    company = Company(com);
   }
 
   @override
   String toString() {
-    return "ID: ${this.id}, "
-        "NAME: ${this.name}, "
-        "USERNAME: ${this.username}, "
-        "EMAIL: ${this.email}, "
-        "${this.address}, "
-        "PHONE: ${this.phone}, "
-        "WEBSITE: ${this.website}, "
-        "${this.company}.";
+    return "ID: $id, "
+        "NAME: $name, "
+        "USERNAME: $username, "
+        "EMAIL: $email, "
+        "$address, "
+        "PHONE: $phone, "
+        "WEBSITE: $website, "
+        "$company.";
   }
 }
 
@@ -46,16 +46,16 @@ class Company {
   String? bs;
 
   Company(Map company) {
-    this.name = company['name'];
-    this.catchPhrase = company['catchPhrase'];
-    this.bs = company['bs'];
+    name = company['name'];
+    catchPhrase = company['catchPhrase'];
+    bs = company['bs'];
   }
 
   @override
   String toString() {
-    return "NAMECOMPANY: ${this.name}, "
-        "CATCHPHRASE: ${this.catchPhrase}, "
-        "BS: ${this.bs}";
+    return "NAMECOMPANY: $name, "
+        "CATCHPHRASE: $catchPhrase, "
+        "BS: $bs";
   }
 }
 
@@ -67,22 +67,22 @@ class Address {
   Geo? geo;
 
   Address(Map address) {
-    this.street = address['street'];
-    this.suite = address['suite'];
-    this.city = address['city'];
-    this.zipcode = address['zipcode'];
+    street = address['street'];
+    suite = address['suite'];
+    city = address['city'];
+    zipcode = address['zipcode'];
 
     Map g = address['geo'];
-    this.geo = Geo(g);
+    geo = Geo(g);
   }
 
   @override
   String toString() {
-    return "STREET: ${this.street}, "
-        "SUITE: ${this.suite}, "
-        "CITY: ${this.city}, "
-        "ZIPCODE: ${this.zipcode}, "
-        "${this.geo}";
+    return "STREET: $street, "
+        "SUITE: $suite, "
+        "CITY: $city, "
+        "ZIPCODE: $zipcode, "
+        "$geo";
   }
 }
 
@@ -91,14 +91,14 @@ class Geo {
   String? lng;
 
   Geo(Map geo) {
-    this.lat = geo['lat'];
-    this.lng = geo['lng'];
+    lat = geo['lat'];
+    lng = geo['lng'];
   }
 
   @override
   String toString() {
-    return "LAT:${this.lat}, "
-        "LNG:${this.lng}";
+    return "LAT:$lat, "
+        "LNG:$lng";
   }
 }
 
