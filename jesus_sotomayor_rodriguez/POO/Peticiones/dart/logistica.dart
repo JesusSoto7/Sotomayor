@@ -1,43 +1,43 @@
 void main(){
-  Logistica donde =Terrestre();
-  Transport que = donde.createTransport();
-  que.ruta();
+  Logistics logistics =Mar();
+  Transport transport = logistics.createTransport();
+  transport.delivery();
 
 }
 
 abstract class Transport{
-  void ruta();
+  void delivery();
 }
 
-class Camion implements Transport{
+class Truck implements Transport{
 
   @override
-  void ruta() {
-    print('Camion');
+  void delivery() {
+    print('El pedido va en Camion');
   }
 }
 
-class Barco implements Transport{
+class Ship implements Transport{
 
   @override
-  void ruta() {
-    print('Barco');
+  void delivery() {
+    print('EL pedido va en Barco');
   }
 }
 
-abstract class Logistica {
+abstract class Logistics {
   Transport createTransport();
 }
 
-class Terrestre implements Logistica{
+class Terrestre implements Logistics{
   @override
   Transport createTransport() {
-    return Camion();
+    return Truck();
   }
 }
-class Mar implements Logistica{
+class Mar implements Logistics{
   @override
   Transport createTransport() {
-    return Barco();
+    return Ship();
   }
 }
