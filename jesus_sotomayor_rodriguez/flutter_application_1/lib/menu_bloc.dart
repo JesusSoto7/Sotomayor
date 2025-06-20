@@ -4,13 +4,9 @@ part 'menu_event.dart';
 part 'menu_state.dart';
 
 class MenuBloc extends Bloc<MenuEvent, MenuState> {
-  MenuBloc() : super(ActualizaMenu()) {
+  MenuBloc() : super(ActualizaMenu(index: 0)) {
     on<PresionoMenu>((event, emit) {
-      // TODO: implement event handler
       emit(ActualizaMenu(index: event.index));
-      if (index == 0) {
-        emit(MenuHome());
-      }
     });
   }
 }

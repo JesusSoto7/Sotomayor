@@ -1,39 +1,79 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/menu_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  final List<Widget> pages = [HomeView(), ProductosView(), PerfilView()];
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        body: [Text('Home'), Text('Explore'), Text('profile')][2],
-        bottomNavigationBar: Navegacion(item: 2),
+      home: BlocProvider(
+        // ✅ Aquí se provee el BLoC a todo el árbol
+        create: (_) => MenuBloc(), // 👉 lo separamos para que esté más limpio
+        child: Scaffold(
+          body: BlocBuilder<MenuBloc, MenuState>(
+            builder: (context, state) {
+              return pages[state.index]; // ✅ muestra la vista correcta
+            },
+          ),
+          bottomNavigationBar: BlocBuilder<MenuBloc, MenuState>(
+            builder: (context, state) {
+              return BottomNavigationBar(
+                currentIndex: state.index,
+                onTap: (i) =>
+                    context.read<MenuBloc>().add(PresionoMenu(index: i)),
+                items: const [
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.home),
+                    label: 'Home',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.list),
+                    label: 'Productos',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.person),
+                    label: 'Perfil',
+                  ),
+                ],
+              );
+            },
+          ),
+        ),
+
+        // bottomNavigationBar: NavigationBar(
+        //   destinations: [
+        //     NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
+        //     NavigationDestination(icon: Icon(Icons.explore), label: 'Explore'),
+        //     NavigationDestination(icon: Icon(Icons.person), label: 'Profile'),
+        //   ],
+        //   selectedIndex: 0,
+        //   onDestinationSelected: (int index) {
+        //     // Aqui el codigo que dispara la accion
+        //     .add(PresionoMenu(index: index));
+        //   },
+        // ),
       ),
     );
   }
 }
 
-class Navegacion extends StatelessWidget {
-  final int item;
-  const Navegacion({super.key, required this.item});
-
+class HomeView extends StatelessWidget {
   @override
-  Widget build(BuildContext context) {
-    return NavigationBar(
-      destinations: [
-        NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
-        NavigationDestination(icon: Icon(Icons.explore), label: 'Explore'),
-        NavigationDestination(icon: Icon(Icons.person), label: 'Profile'),
-      ],
-      selectedIndex: item,
-      onDestinationSelected: (int index) {
-        // Aqui el codigo que dispara la accion
-        .add(PresionoMenu(index: index));
-      },
-    );
-  }
+  Widget build(BuildContext context) => Center(child: Text('INICIOOO'));
+}
+
+class ProductosView extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) => Center(child: Text('Productos'));
+}
+
+class PerfilView extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) => Center(child: Text('Perfil'));
 }
