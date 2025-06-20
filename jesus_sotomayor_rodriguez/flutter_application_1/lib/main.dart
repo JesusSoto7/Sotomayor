@@ -9,6 +9,8 @@ void main() {
 class MyApp extends StatelessWidget {
   final List<Widget> pages = [HomeView(), ProductosView(), PerfilView()];
 
+  MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -64,16 +66,22 @@ class MyApp extends StatelessWidget {
 }
 
 class HomeView extends StatelessWidget {
+  const HomeView({super.key});
+
   @override
   Widget build(BuildContext context) => Center(child: Text('INICIOOO'));
 }
 
 class ProductosView extends StatelessWidget {
+  const ProductosView({super.key});
+
   @override
   Widget build(BuildContext context) => Center(child: Text('Productos'));
 }
 
 class PerfilView extends StatelessWidget {
+  const PerfilView({super.key});
+
   @override
   Widget build(BuildContext context) => Center(child: Text('Perfil'));
 }
