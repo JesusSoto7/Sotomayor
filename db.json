@@ -6,7 +6,6 @@
     "price": 18900,
     "stock": 25,
     "imageUrl": "https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/mby/mby58990/y/10.jpg"
-    "isFeatured": true 
   },
   {
     "id": 2,
@@ -15,7 +14,6 @@
     "price": 35900,
     "stock": 15,
     "imageUrl": "https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/mby/mby58990/y/10.jpg"
-    "isFeatured": false
   },
   {
     "id": 3,
@@ -24,7 +22,6 @@
     "price": 35900,
     "stock": 20,
     "imageUrl": "https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/mby/mby58990/y/10.jpg"
-    "isFeatured": true
   },
   {
     "id": 4,
@@ -33,7 +30,6 @@
     "price": 35900,
     "stock": 10,
     "imageUrl": "https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/mby/mby58990/y/10.jpg"
-    "isFeatured": true
   },
   {
     "id": 5,
@@ -42,7 +38,6 @@
     "price": 19900,
     "stock": 18,
     "imageUrl": "https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/mby/mby58990/y/10.jpg"
-    "isFeatured": false
   },
   {
     "id": 6,
@@ -51,6 +46,5 @@
     "price": 22900,
     "stock": 12,
     "imageUrl": "https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/mby/mby58990/y/10.jpg"
-    "isFeatured": true
   }
 ]
