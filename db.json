@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "Labial Rosa Brillante",
+    "description": "Color rosa intenso y de larga duración.",
+    "price": 18900,
+    "stock": 25,
+    "imageUrl": "https://ejemplo.com/labial_rosa.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Base Natural Tono Claro",
+    "description": "Cobertura ligera y acabado natural.",
+    "price": 35900,
+    "stock": 15,
+    "imageUrl": "https://ejemplo.com/base_clara.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Base Beige Medio",
+    "description": "Ideal para pieles de tono medio.",
+    "price": 35900,
+    "stock": 20,
+    "imageUrl": "https://ejemplo.com/base_medio.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Base Tono Oscuro Moka",
+    "description": "Alta cobertura para pieles oscuras.",
+    "price": 35900,
+    "stock": 10,
+    "imageUrl": "https://ejemplo.com/base_oscura.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Corrector Iluminador",
+    "description": "Cubre imperfecciones y resalta zonas clave.",
+    "price": 19900,
+    "stock": 18,
+    "imageUrl": "https://ejemplo.com/corrector.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Polvo Compacto Translucido",
+    "description": "Fija el maquillaje sin alterar el color.",
+    "price": 22900,
+    "stock": 12,
+    "imageUrl": "https://ejemplo.com/polvo.jpg"
+  }
+]
