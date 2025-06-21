@@ -5,7 +5,8 @@
     "description": "Color rosa intenso y de larga duración.",
     "price": 18900,
     "stock": 25,
-    "imageUrl": "https://ejemplo.com/labial_rosa.jpg"
+    "imageUrl": "https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/mby/mby58990/y/10.jpg"
+    "isFeatured": true 
   },
   {
     "id": 2,
@@ -13,7 +14,8 @@
     "description": "Cobertura ligera y acabado natural.",
     "price": 35900,
     "stock": 15,
-    "imageUrl": "https://ejemplo.com/base_clara.jpg"
+    "imageUrl": "https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/mby/mby58990/y/10.jpg"
+    "isFeatured": false
   },
   {
     "id": 3,
@@ -21,7 +23,8 @@
     "description": "Ideal para pieles de tono medio.",
     "price": 35900,
     "stock": 20,
-    "imageUrl": "https://ejemplo.com/base_medio.jpg"
+    "imageUrl": "https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/mby/mby58990/y/10.jpg"
+    "isFeatured": true
   },
   {
     "id": 4,
@@ -29,7 +32,8 @@
     "description": "Alta cobertura para pieles oscuras.",
     "price": 35900,
     "stock": 10,
-    "imageUrl": "https://ejemplo.com/base_oscura.jpg"
+    "imageUrl": "https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/mby/mby58990/y/10.jpg"
+    "isFeatured": true
   },
   {
     "id": 5,
@@ -37,7 +41,8 @@
     "description": "Cubre imperfecciones y resalta zonas clave.",
     "price": 19900,
     "stock": 18,
-    "imageUrl": "https://ejemplo.com/corrector.jpg"
+    "imageUrl": "https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/mby/mby58990/y/10.jpg"
+    "isFeatured": false
   },
   {
     "id": 6,
@@ -45,6 +50,7 @@
     "description": "Fija el maquillaje sin alterar el color.",
     "price": 22900,
     "stock": 12,
-    "imageUrl": "https://ejemplo.com/polvo.jpg"
+    "imageUrl": "https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/mby/mby58990/y/10.jpg"
+    "isFeatured": true
   }
 ]
