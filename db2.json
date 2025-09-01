@@ -1,0 +1,16 @@
+{
+  "items": [
+    {
+      "titulo": "Comprar",
+      "descripcion": "ir al ara"
+    },
+    {
+      "titulo": "Transito",
+      "descripcion": "Tramite"
+    },
+    {
+      "titulo": "Hospital",
+      "descripcion": "Cita medica"
+    }
+  ]
+}
