@@ -14,7 +14,7 @@ class InicioBloc extends Bloc<InicioEvent, InicioState> {
       emit(InicioLoading());
 
       if (event.nombre.isNotEmpty && event.cedula.isNotEmpty) {
-        final car = await carService.fetchCar(); // usa el servicio inyectado
+        final car = await carService.fetchCar(); // use el servicio creado
         emit(InicioSuccess(car: car));
       } else {
         emit(InicioFailure());

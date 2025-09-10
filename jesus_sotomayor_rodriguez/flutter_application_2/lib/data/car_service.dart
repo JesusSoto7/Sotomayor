@@ -4,7 +4,7 @@ import 'car.dart';
 
 class CarService {
   final String baseUrl =
-      "https://raw.githubusercontent.com/AijaMartinez/flutter_app/refs/heads/main/infoCar.json";
+      "https://raw.githubusercontent.com/JesusSoto7/Sotomayor/refs/heads/main/dbcar.json";
 
   Future<Car> fetchCar() async {
     final response = await http.get(Uri.parse(baseUrl));
