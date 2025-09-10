@@ -16,9 +16,13 @@ class InitialView extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
-        title: const Text("Inicio"),
+        title: const Text(
+          "Ingreso",
+          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+        ),
         centerTitle: true,
         elevation: 0,
+        backgroundColor: Colors.deepPurple,
       ),
       body: BlocConsumer<InicioBloc, InicioState>(
         listener: (context, state) {
@@ -36,15 +40,13 @@ class InitialView extends StatelessWidget {
           } else if (state is InicioFailure) {
             return Failure();
           } else {
-            // Si por alguna razón llega otro estado, mostramos el form
-            return _formContent(context);
+            return Failure();
           }
         },
       ),
     );
   }
 
-  /// 👉 Método privado con el formulario
   Widget _formContent(BuildContext context) {
     return Center(
       child: SingleChildScrollView(
